@@ -2,55 +2,125 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameX | Home</title>
     <style>
-        :root { --red: #ff0000; --dark: #0a0a0a; }
-        body { background: var(--dark); color: white; font-family: sans-serif; margin: 0; text-align: center; }
-        nav { padding: 20px; border-bottom: 1px solid #222; display: flex; justify-content: space-around; }
-        .hero { padding: 100px 20px; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070'); background-size: cover; }
+        :root { --red: #ff0000; --dark: #050505; --card-bg: #111; }
         
-        /* Pricing Table */
-        .pricing-section { padding: 50px 5%; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .price-card { background: #111; padding: 30px; border: 1px solid #333; border-radius: 15px; transition: 0.3s; }
-        .price-card.featured { border-color: var(--red); transform: scale(1.05); }
-        .price-card h2 { color: var(--red); }
-        .price { font-size: 2rem; font-weight: bold; }
+        * { box-sizing: border-box; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; text-align: center; overflow-x: hidden; }
+        
+        /* Fixed Navigation */
+        nav { 
+            padding: 15px 10%; 
+            background: rgba(0,0,0,0.95);
+            border-bottom: 1px solid #222; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-links a { color: #bbb; margin-left: 30px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+        .nav-links a:hover { color: var(--red); }
+        
+        /* Hero Section Fixes */
+        .hero { 
+            padding: 140px 20px; 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070'); 
+            background-size: cover; 
+            background-position: center;
+        }
+        .hero h1 { font-size: clamp(2rem, 5vw, 4rem); margin: 0; letter-spacing: 2px; }
+        .hero p { color: #aaa; font-size: 1.2rem; margin-top: 10px; }
+        
+        /* Pricing Table Fixes */
+        .pricing-section { padding: 80px 5%; max-width: 1200px; margin: auto; }
+        .pricing-grid { 
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 30px; 
+            margin-top: 40px;
+        }
+        .price-card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border: 1px solid #222; 
+            border-radius: 20px; 
+            width: 100%;
+            max-width: 350px;
+            transition: 0.4s ease; 
+        }
+        .price-card:hover { transform: translateY(-10px); border-color: #444; }
+        .price-card.featured { border: 2px solid var(--red); box-shadow: 0 0 30px rgba(255,0,0,0.1); }
+        
+        .price-card h2 { margin: 0; font-size: 1.5rem; letter-spacing: 1px; }
+        .price { font-size: 3rem; font-weight: 800; margin: 20px 0; }
+        .price span { font-size: 1rem; color: #666; }
+        
+        .feature-list { list-style: none; padding: 0; margin: 30px 0; color: #aaa; line-height: 2; }
+        
+        .btn { 
+            display: inline-block;
+            width: 100%;
+            padding: 15px; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-gray { background: #222; color: white; }
+        .btn-red { background: var(--red); color: white; }
+        .btn:hover { opacity: 0.8; transform: scale(1.02); }
 
-        footer { padding: 40px; border-top: 1px solid #222; color: #666; font-size: 14px; }
+        footer { padding: 60px; border-top: 1px solid #111; color: #444; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <nav>
-    <img src="Caignite (6).png" alt="GameX Logo" style="height:40px;">
-    <div>
-        <a href="#home" style="color:white; margin:0 15px; text-decoration:none;">Home</a>
-        <a href="#pricing" style="color:white; margin:0 15px; text-decoration:none;">Pricing</a>
+    <!-- Logo sized correctly -->
+    <img src="Caignite (6).png" alt="GameX Logo" style="height: 50px; width: auto;">
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#pricing">Pricing</a>
     </div>
 </nav>
 
 <section id="home" class="hero">
     <h1>GAMING WITHOUT LIMITS</h1>
-    <p>Stream your favorite titles at 120 FPS instantly.</p>
+    <p>Direct-to-browser cloud streaming at 120 FPS.</p>
 </section>
 
 <section id="pricing" class="pricing-section">
-    <h2>Choose Your Power</h2>
+    <h2 style="font-size: 2.5rem;">Choose Your Power</h2>
     <div class="pricing-grid">
+        <!-- Free Card -->
         <div class="price-card">
-            <h2>FREE</h2>
+            <h2 style="color: #666;">FREE</h2>
             <div class="price">$0<span>/mo</span></div>
-            <p>1 Hour Sessions</p>
-            <p>Standard Quality</p>
-            <button style="background:#333; color:white; border:none; padding:10px 20px; cursor:pointer;">START PLAYING</button>
+            <ul class="feature-list">
+                <li>1 Hour Sessions</li>
+                <li>Standard Latency</li>
+                <li>Ad-Supported</li>
+            </ul>
+            <button class="btn btn-gray">START PLAYING</button>
         </div>
+        
+        <!-- Elite Card -->
         <div class="price-card featured">
-            <h2>ELITE</h2>
+            <h2 style="color: var(--red);">ELITE</h2>
             <div class="price">$15<span>/mo</span></div>
-            <p>Unlimited Sessions</p>
-            <p>4K / 120 FPS</p>
-            <button style="background:var(--red); color:white; border:none; padding:10px 20px; cursor:pointer;">GO PRO</button>
+            <ul class="feature-list">
+                <li>Unlimited Sessions</li>
+                <li>4K / 120 FPS Support</li>
+                <li>Priority Node Access</li>
+            </ul>
+            <button class="btn btn-red">GO PRO</button>
         </div>
     </div>
 </section>
