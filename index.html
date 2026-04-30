@@ -1,8 +1,53 @@
 <!DOCTYPE html>
-<html>
-<head><title>Epic 120FPS Gaming</title></head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic Gaming | 120 FPS Stream</title>
+    <style>
+        body { background: #0f0f0f; color: #00ff99; font-family: 'Courier New', monospace; text-align: center; padding: 50px; }
+        .status-box { border: 2px solid #00ff99; padding: 20px; display: inline-block; margin-bottom: 20px; border-radius: 10px; }
+        #video-container { width: 80%; height: 450px; background: #222; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 4px solid #333; position: relative; }
+        .epic-badge { position: absolute; top: 10px; right: 10px; background: red; color: white; padding: 5px 10px; font-weight: bold; display: none; }
+    </style>
+</head>
 <body>
-  <h1>Welcome to the Epic Gaming Stream</h1>
-  <p>120 FPS Mode: Initializing...</p>
+<div class="status-box">
+        <h1>EPIC GAMING STREAM</h1>
+        <p id="hz-display">Scanning Monitor...</p>
+    </div>
+
+  <p>Video Player Ready for Ingest...</p>
+
+    <script>
+        // The magic "Epic" logic to detect monitor Hz
+        function getRefreshRate() {
+            let frames = 0;
+            let start = performance.now();
+            
+            function check() {
+                frames++;
+                let now = performance.now();
+                if (now - start >= 1000) {
+                    const hz = Math.round(frames);
+                    const display = document.getElementById('hz-display');
+                    const badge = document.getElementById('epic-tag');
+                  if (hz >= 110) {
+                        display.innerText = "Monitor: " + hz + "Hz (EPIC MODE ACTIVE)";
+                        badge.style.display = "block";
+                    } else if (hz >= 85) {
+                        display.innerText = "Monitor: " + hz + "Hz (90 FPS OPTIMIZED)";
+                    } else {
+                        display.innerText = "Monitor: " + hz + "Hz (Standard 60 FPS Mode)";
+                    }
+                } else {
+                    requestAnimationFrame(check);
+                }
+            }
+            requestAnimationFrame(check);
+        }
+
+        window.onload = getRefreshRate;
+    </script>
 </body>
 </html>
