@@ -23,7 +23,7 @@
             margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        /* Nav Bar Fixed at Top */
+        /* Nav Bar - Links Left, Buttons Right */
         nav { 
             position: fixed; top: 0; width: 100%; height: 70px;
             background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
@@ -40,11 +40,10 @@
         .page-section { display: none; padding-top: 70px; } 
         .active { display: block !important; }
 
-        /* Banner Fix: Ensures full width and correct height */
+        /* Banner - Full Width and Scale-Friendly */
         .promo-container { 
             width: 100%; 
-            background: #000; 
-            overflow: hidden;
+            background: #000;
             display: flex;
             justify-content: center;
         }
@@ -52,6 +51,7 @@
             width: 100%;
             height: auto; 
             display: block;
+            object-fit: contain; /* Prevents text from being cut off */
         }
 
         .hero-content { padding: 40px 5% 10px 5%; max-width: 800px; }
@@ -59,7 +59,6 @@
         
         .container { padding: 20px 5% 40px 5%; }
         
-        /* Game Cards */
         .game-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         .game-card { 
             background: var(--gray); 
@@ -74,18 +73,13 @@
         .game-card img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
         .game-info { padding: 12px; text-align: center; }
 
-        /* Membership */
-        .pricing-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
-        .price-card { background: var(--gray); padding: 40px; border-radius: 12px; width: 300px; text-align: left; border: 1px solid #222; }
-        .price-card.featured { border: 2px solid var(--red); transform: scale(1.05); }
-        .price { font-size: 2.5rem; font-weight: 900; margin: 15px 0; color: var(--red); }
-        ul { list-style: none; padding: 0; line-height: 2; color: var(--light-gray); }
-
         .about-section { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; margin-top: 60px; }
 
-        .btn { padding: 12px 25px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; }
+        .btn { padding: 10px 20px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
         .btn-red { background: var(--red); color: white; }
+        .btn-red:hover { background: #ff0f1a; }
         .btn-outline { background: transparent; color: white; border: 1px solid var(--light-gray); font-size: 12px; text-decoration: none; }
+        .btn-outline:hover { color: white; border-color: white; }
 
         footer { padding: 40px 5%; text-align: center; color: var(--light-gray); font-size: 13px; border-top: 1px solid #222; margin-top: 60px; }
     </style>
@@ -102,19 +96,19 @@
     </div>
     <div class="nav-right">
         <a class="btn btn-outline" style="border:none;" href="#">LOG IN</a>
-        <button class="btn btn-red" style="font-size: 12px; padding: 8px 20px;">SIGN UP</button>
+        <button class="btn btn-red">SIGN UP</button>
     </div>
 </nav>
 
 <div id="home" class="page-section active">
     <div class="promo-container">
-        <!-- CRITICAL: Make sure this filename matches your folder (banner_4.jpg) -->
-        <img src="banner_4.jpg" class="promo-banner" alt="GameX Experience Banner">
+        <!-- Exact banner.png reference -->
+        <img src="banner.png" class="promo-banner" alt="GameX Experience">
     </div>
     
     <div class="hero-content">
         <h1>THE POWER IS YOURS</h1>
-        <p>Stream high-end PC games on any device. Select a title to begin.</p>
+        <p>High-performance cloud gaming on your terms.</p>
     </div>
     
     <div class="container">
@@ -130,10 +124,11 @@
             </div>
         </div>
 
+        <!-- About Us Restored -->
         <div class="about-section">
             <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
             <p style="color: var(--light-gray); line-height: 1.8;">
-                GameX is pioneering browser-based cloud gaming. Access high-end gaming experiences instantly, without the need for expensive hardware.
+                GameX provides the ultimate cloud gaming experience. No downloads, no lag, just high-tier performance delivered directly to your web browser. 
             </p>
         </div>
     </div>
@@ -141,23 +136,21 @@
 
 <div id="pricing" class="page-section">
     <div class="container" style="text-align: center;">
-        <h1>Membership Levels</h1>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <h2>Basic</h2><div class="price">$0</div>
-                <button class="btn btn-outline" style="width: 100%;" onclick="showTab('home')">JOIN FREE</button>
-            </div>
-            <div class="price-card featured">
-                <h2>Premium</h2><div class="price">$15</div>
-                <button class="btn btn-red" style="width: 100%;">GO PREMIUM</button>
+        <h1>MEMBERSHIP</h1>
+        <div class="pricing-grid" style="display: flex; justify-content: center; margin-top: 30px;">
+            <div style="background: var(--gray); padding: 40px; border-radius: 12px; border: 2px solid var(--red); width: 300px;">
+                <h2>Premium</h2>
+                <div style="font-size: 2.5rem; color: var(--red); margin: 20px 0;">$15</div>
+                <button class="btn btn-red" style="width: 100%;">START NOW</button>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Copyright Section -->
 <footer>
     &copy; 2026 GameX Cloud Gaming. All rights reserved. <br>
-    Next-gen streaming technology.
+    We are currently on early access until October 2026.
 </footer>
 
 <script>
@@ -172,7 +165,7 @@
     }
 
     function launchGame(gameName) {
-        alert("Preparing stream for " + gameName + "...\nStatus: GPU Provisioning in Progress.");
+        alert("Preparing " + gameName + " stream... Accessing GPUs.");
     }
 </script>
 
