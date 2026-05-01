@@ -20,9 +20,7 @@
             background: var(--dark); 
             color: white; 
             font-family: 'Montserrat', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-            overflow-x: hidden;
+            margin: 0; padding: 0; overflow-x: hidden;
         }
 
         nav { 
@@ -32,191 +30,113 @@
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000; box-sizing: border-box;
         }
-        .nav-left { display: flex; align-items: center; gap: 40px; }
-        .nav-links a { color: var(--light-gray); text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
-        .nav-links a:hover, .nav-links a.active-link { color: white; }
+        .nav-links a { color: var(--light-gray); text-decoration: none; font-weight: 700; font-size: 14px; cursor: pointer; margin-right: 20px; }
+        .active-link { color: white !important; border-bottom: 2px solid var(--red); padding-bottom: 5px; }
 
         .page-section { display: none; padding-top: 70px; }
         .active { display: block !important; }
 
-        /* Cinematic Hero Section */
-        .hero {
-            position: relative;
+        /* Full Width Banner */
+        .promo-banner {
             width: 100%;
-            min-height: 100vh; 
-            background: var(--dark);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            box-sizing: border-box;
-        }
-
-        /* Full-Width Banner Image */
-        .promo-img {
-            width: 100%;
-            height: auto;
+            max-height: 500px;
+            object-fit: cover;
             display: block;
-            margin-bottom: 40px;
-            border-bottom: 2px solid #222;
         }
 
-        .hero-content {
-            padding: 0 5% 60px 5%;
-            max-width: 800px;
-        }
-
-        .hero-content h1 { font-size: 3.5rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; line-height: 1.1; }
-        .hero-content p { font-size: 1.1rem; color: var(--light-gray); margin-bottom: 35px; line-height: 1.6; }
-
-        .container { padding: 50px 5%; }
-        h2.section-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 25px; border-left: 5px solid var(--red); padding-left: 15px; }
-
-        /* Game Grid */
-        .game-grid { display: flex; gap: 25px; flex-wrap: wrap; }
-        .game-card { 
-            background: var(--gray); 
-            border-radius: 10px; 
-            overflow: hidden; 
-            width: 260px; 
-            cursor: pointer;
-            transition: 0.3s ease;
-            position: relative;
-        }
-        .game-card:hover { 
-            transform: translateY(-12px); 
-            box-shadow: 0 12px 25px rgba(229, 9, 20, 0.3); 
-            outline: 2px solid var(--red);
-        }
-        .game-card img { width: 100%; height: 360px; object-fit: cover; border-bottom: 3px solid var(--red); }
-        .game-info { padding: 18px; }
-        .game-info h3 { margin: 0 0 6px 0; font-size: 1.1rem; }
-        .game-info p { margin: 0; font-size: 0.85rem; color: var(--light-gray); }
-
-        .play-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 360px;
-            background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: 0.3s;
-        }
-        .game-card:hover .play-overlay { opacity: 1; }
-        .play-btn-circle {
-            background: var(--red); width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 26px;
-        }
-
-       <!-- PRICING / MEMBERSHIP TAB -->
-<div id="pricing" class="page-section">
-    <div class="container" style="text-align: center; padding-top: 60px;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 15px;">Choose Your Rig</h1>
-        <p style="color: var(--light-gray); margin-bottom: 60px; font-size: 1.2rem;">Elevate your gameplay with premium cloud performance.</p>
+        .hero-content { padding: 40px 5%; max-width: 800px; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 900; margin: 10px 0; text-transform: uppercase; }
         
+        .container { padding: 40px 5%; }
+        .game-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+        .game-card { background: var(--gray); border-radius: 8px; width: 250px; overflow: hidden; border-bottom: 3px solid var(--red); }
+        .game-card img { width: 100%; height: 350px; object-fit: cover; }
+        .game-info { padding: 15px; }
+
+        /* Pricing Tiers */
+        .pricing-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
+        .price-card { background: var(--gray); padding: 40px; border-radius: 12px; width: 300px; text-align: left; transition: 0.3s; border: 1px solid #222; }
+        .price-card.featured { border: 2px solid var(--red); transform: scale(1.05); }
+        .price-card h2 { margin-top: 0; color: white; }
+        .price { font-size: 2.5rem; font-weight: 900; margin: 15px 0; color: var(--red); }
+        ul { list-style: none; padding: 0; line-height: 2; color: var(--light-gray); }
+        ul li::before { content: "• "; color: var(--red); }
+
+        .btn { padding: 12px 25px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; width: 100%; margin-top: 20px; }
+        .btn-red { background: var(--red); color: white; }
+        .btn-dark { background: #333; color: white; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div style="display: flex; align-items: center; gap: 30px;">
+        <img src="logo.png" alt="Logo" style="height: 35px;">
+        <div class="nav-links">
+            <a onclick="showTab('home')" id="link-home" class="active-link">GAMES</a>
+            <a onclick="showTab('pricing')" id="link-pricing">MEMBERSHIP</a>
+        </div>
+    </div>
+</nav>
+
+<div id="home" class="page-section active">
+    <img src="banner.png" class="promo-banner" alt="GameX Banner">
+    <div class="hero-content">
+        <h1>The Power is Yours</h1>
+        <p>Stream high-end PC games on any device. No downloads, just instant performance.</p>
+    </div>
+    <div class="container">
+        <h2 style="border-left: 4px solid var(--red); padding-left: 15px;">FREE-TO-PLAY</h2>
+        <div class="game-grid">
+            <div class="game-card"><img src="download.jfif" alt="Fortnite"><div class="game-info"><h3>Fortnite</h3><p>Action</p></div></div>
+            <div class="game-card"><img src="download.png" alt="Roblox"><div class="game-info"><h3>Roblox</h3><p>Sandbox</p></div></div>
+        </div>
+    </div>
+</div>
+
+<div id="pricing" class="page-section">
+    <div class="container" style="text-align: center;">
+        <h1>Membership Levels</h1>
         <div class="pricing-grid">
             <!-- Basic Tier -->
-            <div class="price-card" style="text-align: left;">
+            <div class="price-card">
                 <h2>Basic</h2>
-                <div class="price">$0<span style="font-size: 1rem; color: gray;">/mo</span></div>
+                <div class="price">$0</div>
                 <ul>
-                    <li>Stream up to 1080p 60 FPS</li>
+                    <li>Stream up to 1080p 60FPS</li>
                     <li>3-Hour Session Length</li>
                     <li>Standard Queue (Wait in line)</li>
                 </ul>
-                <button class="btn" style="width: 100%; background: #333;" onclick="showTab('home')">JOIN FREE</button>
+                <button class="btn btn-dark" onclick="showTab('home')">CURRENT PLAN</button>
             </div>
 
-            <!-- + Tier (The "Mid" Tier) -->
-            <div class="price-card" style="text-align: left; border-top: 5px solid #888;">
-                <h2>Plus+</h2>
-                <div class="price">$9.99<span style="font-size: 1rem; color: gray;">/mo</span></div>
+            <!-- + Tier -->
+            <div class="price-card">
+                <h2>Plus Tier</h2>
+                <div class="price">$9.99</div>
                 <ul>
-                    <li>Boost up to 1440p 90 FPS</li>
+                    <li>High-Def 1440p 90FPS</li>
                     <li>Extended 6-Hour Sessions</li>
-                    <li>Priority Queue (Skip the wait)</li>
+                    <li>Priority Queue (Don't wait in line)</li>
                 </ul>
-                <button class="btn btn-red" style="width: 100%; background: #555;">GO PLUS</button>
+                <button class="btn btn-red">UPGRADE TO PLUS</button>
             </div>
 
-            <!-- Premium Tier (The "Ultimate" Tier) -->
-            <div class="price-card featured" style="text-align: left;">
-                <h2 style="color: var(--red);">Premium</h2>
-                <div class="price">$15<span style="font-size: 1rem; color: gray;">/mo</span></div>
-                <ul>
-                    <li>Cinema 4K at 120 FPS</li>
-                    <li>Unlimited Session Length</li>
-                    <li>Instant Access (Zero Queues)</li>
-                    <li>No Ads & Full Library Access</li>
-                </ul>
-                <button class="btn btn-red" style="width: 100%;">GET ULTIMATE</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- HOME / GAMES TAB -->
-<div id="home" class="page-section active">
-    <div class="hero">
-        <!-- Banner image now takes full width -->
-        <img src="banner.png" class="promo-img" alt="Start Your Gaming Experience">
-        
-        <div class="hero-content">
-            <h1>The Power is Yours</h1>
-            <p>Don't let hardware hold you back. Stream the world's most demanding PC games to any device instantly with our cloud infrastructure.</p>
-            <button class="btn btn-red" onclick="document.getElementById('games-list').scrollIntoView({behavior: 'smooth'})">EXPLORE GAMES</button>
-        </div>
-    </div>
-
-    <div class="container" id="games-list">
-        <h2 class="section-title">Free-to-Play Titles</h2>
-        <div class="game-grid">
-            
-            <div class="game-card">
-                <img src="fortnite.jpg" alt="Fortnite">
-                <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
-                <div class="game-info">
-                    <h3>Fortnite</h3>
-                    <p>Epic Games • Action</p>
-                </div>
-            </div>
-
-            <div class="game-card">
-                <img src="roblox.png" alt="Roblox">
-                <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
-                <div class="game-info">
-                    <h3>Roblox</h3>
-                    <p>Roblox Corp • Virtual World</p>
-                </div>
-            </div>
-
-        </div>
-
-        <div style="background: #0a0a0a; border: 1px solid #1a1a1a; padding: 50px; border-radius: 15px; margin-top: 80px; text-align: left;">
-            <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
-            <p style="color: var(--light-gray); line-height: 1.8; font-size: 1.1rem;">GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's specs.</p>
-        </div>
-    </div>
-</div>
-
-<!-- PRICING / MEMBERSHIP TAB -->
-<div id="pricing" class="page-section">
-    <div class="container" style="text-align: center; padding-top: 60px;">
-        <h1 style="font-size: 3.5rem; margin-bottom: 15px;">Choose Your Rig</h1>
-        <div class="pricing-grid">
-            <div class="price-card" style="text-align: left;">
-                <h2>Basic</h2>
-                <div class="price">$0</div>
-                <button class="btn" style="width: 100%; background: #333;" onclick="showTab('home')">CURRENT PLAN</button>
-            </div>
-
-            <div class="price-card featured" style="text-align: left;">
-                <h2 style="color: var(--red);">Ultimate</h2>
+            <!-- Premium Tier -->
+            <div class="price-card featured">
+                <h2>Premium</h2>
                 <div class="price">$15</div>
-                <button class="btn btn-red" style="width: 100%;">UPGRADE NOW</button>
+                <ul>
+                    <li>Cinematic 4K 120FPS</li>
+                    <li>Unlimited Session Length</li>
+                    <li>Instant Access (No waiting)</li>
+                    <li>Full Library & Zero Ads</li>
+                </ul>
+                <button class="btn btn-red">GO PREMIUM</button>
             </div>
         </div>
     </div>
 </div>
-
-<footer>
-    &copy; 2026 GameX Cloud Gaming.
-</footer>
 
 <script>
     function showTab(tabId) {
@@ -224,7 +144,6 @@
         document.getElementById('pricing').classList.remove('active');
         document.getElementById('link-home').classList.remove('active-link');
         document.getElementById('link-pricing').classList.remove('active-link');
-
         document.getElementById(tabId).classList.add('active');
         document.getElementById('link-' + tabId).classList.add('active-link');
         window.scrollTo(0,0);
