@@ -8,50 +8,45 @@
         :root { --red: #ff0000; --dark: #050505; --card-bg: #111; }
         body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
 
-        /* Navigation */
         nav { 
             position: fixed; top: 0; width: 100%; height: 80px;
             background: rgba(0,0,0,0.95); border-bottom: 1px solid #222;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 8%; z-index: 1000; box-sizing: border-box;
         }
-        .nav-links a { color: #bbb; text-decoration: none; margin-left: 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .nav-links a { color: #bbb; text-decoration: none; margin-left: 25px; font-weight: bold; cursor: pointer; }
         .nav-links a:hover { color: var(--red); }
 
-        /* Section Visibility Toggle */
         .page-section { display: none; padding-top: 80px; }
         .active { display: block !important; }
 
-        /* Hero Image - Home Page */
+        /* Hero Image - Fixed with URL Encoding */
+        .hero-container {
+            width: 100%;
+            background: black;
+            text-align: center;
+        }
         .hero-img {
             width: 100%;
+            max-width: 1200px;
             height: auto;
-            max-height: 80vh;
-            object-fit: contain;
-            background: black;
+            display: block;
+            margin: 0 auto;
         }
 
-        /* Content Sections */
-        .container { padding: 60px 10%; text-align: center; }
+        .container { padding: 40px 10%; text-align: center; }
         .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .game-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; transition: 0.3s; }
-        .game-card:hover { transform: scale(1.03); border-color: var(--red); }
-        .game-card img { width: 100%; height: 200px; object-fit: cover; }
-        .game-card h3 { padding: 15px; margin: 0; }
+        .game-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; border: 1px solid #222; }
+        .game-card img { width: 100%; height: 200px; object-fit: cover; background: #222; }
 
-        .about-section { background: #0a0a0a; border-radius: 20px; padding: 50px; margin-top: 50px; border: 1px solid #1a1a1a; line-height: 1.6; }
-        .about-section h2 { color: var(--red); margin-top: 0; }
+        .about-section { background: #0a0a0a; border-radius: 20px; padding: 40px; margin-top: 50px; border: 1px solid #1a1a1a; text-align: left; }
+        .about-section h2 { color: var(--red); }
 
-        /* Pricing Table */
         .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 50px; }
-        .price-card { background: #111; padding: 40px; border-radius: 20px; border: 1px solid #333; width: 320px; }
+        .price-card { background: #111; padding: 40px; border-radius: 20px; border: 1px solid #333; width: 320px; text-align: center; }
         .price-card.featured { border: 2px solid var(--red); }
         
-        .btn { 
-            display: block; width: 100%; padding: 15px 0; margin-top: 20px;
-            text-decoration: none; font-weight: bold; border-radius: 8px; 
-            text-transform: uppercase; color: white; border: none; cursor: pointer;
-        }
+        .btn { display: block; width: 100%; padding: 15px 0; margin-top: 20px; text-decoration: none; font-weight: bold; border-radius: 8px; color: white; border: none; cursor: pointer; text-transform: uppercase; }
         .btn-red { background: var(--red); }
 
         footer { padding: 40px; text-align: center; color: #444; font-size: 14px; }
@@ -60,58 +55,53 @@
 <body>
 
 <nav>
-    <img src="Caignite (6).png" alt="GameX" style="height: 50px;">
+    <img src="Caignite%20(6).png" alt="GameX" style="height: 50px;">
     <div class="nav-links">
         <a onclick="showTab('home')">HOME</a>
         <a onclick="showTab('pricing')">PRICING</a>
     </div>
 </nav>
 
-<!-- HOME PAGE TAB -->
 <div id="home" class="page-section active">
-    <!-- Your main image at the top -->
-    <img src="Trusted by 1.5k+ Investors (7).jpg" class="hero-img" alt="Start Gaming Experience">
+    <div class="hero-container">
+        <!-- THE FIXED IMAGE LINK -->
+        <img src="Trusted%20by%201.5k%2B%20Investors%20(7).jpg" class="hero-img" alt="Hero">
+    </div>
 
     <div class="container">
-        <!-- Game Selection -->
         <h2>Available Games</h2>
         <div class="game-grid">
             <div class="game-card">
-                <img src="https://assets.xboxservices.com/assets/f0/95/f0951662-7560-4497-8321-464a4b860000.jpg" alt="Fortnite">
+                <img src="https://wallpapers.com/images/featured/fortnite-pictures-b538asv6n569v37a.jpg" alt="Fortnite">
                 <h3>Fortnite</h3>
-                <button class="btn btn-red" style="margin: 10px; width: 90%;">LAUNCH</button>
+                <button class="btn btn-red">LAUNCH</button>
             </div>
             <div class="game-card">
                 <img src="https://images.rbxcdn.com/f04c637a892b34f89d3fa122f46ee6c9.jpg" alt="Roblox">
                 <h3>Roblox</h3>
-                <button class="btn btn-red" style="margin: 10px; width: 90%;">LAUNCH</button>
+                <button class="btn btn-red">LAUNCH</button>
             </div>
         </div>
 
-        <!-- About Us Description -->
         <div class="about-section">
             <h2>About GameX</h2>
-            <p>Welcome to the 2026 gaming revolution. GameX was built with a simple goal: to destroy the barrier between high-end gaming and everyday hardware. Whether you're on a school laptop, an old tablet, or a phone, our cloud technology streams the power of a high-end NVIDIA GPU directly to your browser.</p>
-            <p>We are currently in early access, supporting a select list of high-performance titles with ultra-low latency. Join us as we build the world's most accessible gaming community.</p>
+            <p>Welcome to the 2026 gaming revolution. GameX streams high-end NVIDIA GPU power directly to your browser. No downloads, no lag, just play.</p>
         </div>
     </div>
 </div>
 
-<!-- PRICING PAGE TAB -->
 <div id="pricing" class="page-section">
     <div class="container">
-        <h2 style="font-size: 3rem; margin: 0;">Choose Your Power</h2>
+        <h2>Choose Your Power</h2>
         <div class="pricing-grid">
             <div class="price-card">
-                <h2 style="color: #666;">FREE</h2>
-                <div style="font-size: 3.5rem; font-weight: 800; margin: 20px 0;">$0<span>/mo</span></div>
-                <p>1 Hour Sessions • 1080p 60fps</p>
+                <h2>FREE</h2>
+                <div style="font-size: 3rem;">$0</div>
                 <button class="btn btn-red" style="background:#333;" onclick="showTab('home')">START PLAYING</button>
             </div>
             <div class="price-card featured">
                 <h2 style="color: var(--red);">ELITE</h2>
-                <div style="font-size: 3.5rem; font-weight: 800; margin: 20px 0;">$15<span>/mo</span></div>
-                <p>Unlimited • 4K 120fps • No Ads</p>
+                <div style="font-size: 3rem;">$15</div>
                 <button class="btn btn-red">GO PRO</button>
             </div>
         </div>
