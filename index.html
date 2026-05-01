@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameX | Cloud Gaming</title>
+    <title>GameX | Cloud Streaming</title>
     
-    <!-- This line adds your logo to the browser tab -->
     <link rel="icon" type="image/png" href="logo.png">
-    
-    <!-- Premium Font (Montserrat) for that sleek gaming look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
         :root { 
-            --red: #e50914; /* Deep, vibrant gaming red */
+            --red: #e50914; 
             --dark: #000000; 
             --gray: #141414;
             --light-gray: #b3b3b3;
@@ -28,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* Sleek Navigation */
         nav { 
             position: fixed; top: 0; width: 100%; height: 70px;
             background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
@@ -40,7 +36,6 @@
         .nav-links a { color: var(--light-gray); text-decoration: none; font-weight: 700; font-size: 14px; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
         .nav-links a:hover, .nav-links a.active-link { color: white; }
 
-        /* Page Tabs */
         .page-section { display: none; padding-top: 70px; }
         .active { display: block !important; }
 
@@ -48,127 +43,136 @@
         .hero {
             position: relative;
             width: 100%;
-            height: 70vh;
-            background: linear-gradient(to top, var(--dark), transparent), url('hero.jpg') no-repeat center center/cover;
+            min-height: 90vh; 
+            background: linear-gradient(to top, var(--dark) 15%, transparent), url('hero.jpg') no-repeat center center/cover;
             display: flex;
             align-items: flex-end;
-            padding: 50px 5%;
+            padding: 60px 5%;
             box-sizing: border-box;
         }
-        .hero-content h1 { font-size: 4rem; font-weight: 900; margin: 0 0 10px 0; text-transform: uppercase; }
-        .hero-content p { font-size: 1.2rem; color: var(--light-gray); max-width: 600px; margin-bottom: 30px; }
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        /* Your new banner positioning */
+        .promo-img {
+            width: 100%;
+            max-width: 580px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            border: 1px solid #333;
+            display: block;
+        }
 
-        .container { padding: 40px 5%; }
-        h2.section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; border-left: 4px solid var(--red); padding-left: 10px; }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; line-height: 1.1; }
+        .hero-content p { font-size: 1.1rem; color: var(--light-gray); margin-bottom: 35px; line-height: 1.6; }
 
-        /* GeForce Style Game Cards */
-        .game-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+        .container { padding: 50px 5%; }
+        h2.section-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 25px; border-left: 5px solid var(--red); padding-left: 15px; }
+
+        /* Game Grid */
+        .game-grid { display: flex; gap: 25px; flex-wrap: wrap; }
         .game-card { 
             background: var(--gray); 
-            border-radius: 8px; 
+            border-radius: 10px; 
             overflow: hidden; 
-            width: 250px; 
+            width: 260px; 
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
             position: relative;
         }
         .game-card:hover { 
-            transform: translateY(-10px) scale(1.02); 
-            box-shadow: 0 10px 20px rgba(229, 9, 20, 0.2); 
+            transform: translateY(-12px); 
+            box-shadow: 0 12px 25px rgba(229, 9, 20, 0.3); 
             outline: 2px solid var(--red);
         }
-        .game-card img { width: 100%; height: 350px; object-fit: cover; border-bottom: 2px solid var(--red); }
-        .game-info { padding: 15px; }
-        .game-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
-        .game-info p { margin: 0; font-size: 0.8rem; color: var(--light-gray); }
+        .game-card img { width: 100%; height: 360px; object-fit: cover; border-bottom: 3px solid var(--red); }
+        .game-info { padding: 18px; }
+        .game-info h3 { margin: 0 0 6px 0; font-size: 1.1rem; }
+        .game-info p { margin: 0; font-size: 0.85rem; color: var(--light-gray); }
 
-        /* Play Button Overlay */
         .play-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 350px;
-            background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center;
+            position: absolute; top: 0; left: 0; width: 100%; height: 360px;
+            background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center;
             opacity: 0; transition: 0.3s;
         }
         .game-card:hover .play-overlay { opacity: 1; }
         .play-btn-circle {
-            background: var(--red); width: 60px; height: 60px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 24px;
+            background: var(--red); width: 65px; height: 65px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 26px;
         }
-
-        /* Buttons */
-        .btn { 
-            padding: 12px 30px; font-weight: 700; border-radius: 4px; 
-            text-transform: uppercase; color: white; border: none; cursor: pointer;
-            letter-spacing: 1px; transition: 0.3s; font-size: 14px;
-        }
-        .btn-red { background: var(--red); }
-        .btn-red:hover { background: #ff1e27; box-shadow: 0 0 15px var(--red); }
-        .btn-outline { background: transparent; border: 2px solid var(--light-gray); }
-        .btn-outline:hover { border-color: white; }
 
         /* Pricing Area */
         .pricing-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
-        .price-card { background: var(--gray); padding: 40px; border-radius: 8px; width: 300px; }
-        .price-card.featured { border-top: 4px solid var(--red); background: linear-gradient(180deg, #1a0505 0%, var(--gray) 100%); }
-        .price-card h2 { margin-top: 0; font-size: 1.5rem; }
-        .price { font-size: 3rem; font-weight: 900; margin: 20px 0; }
-        ul { list-style: none; padding: 0; color: var(--light-gray); line-height: 2; margin-bottom: 30px; }
-        ul li::before { content: '✓'; color: var(--red); margin-right: 10px; font-weight: bold; }
+        .price-card { background: var(--gray); padding: 45px; border-radius: 10px; width: 310px; position: relative; }
+        .price-card.featured { border-top: 5px solid var(--red); background: linear-gradient(180deg, #1d0808 0%, var(--gray) 100%); }
+        .price { font-size: 3.2rem; font-weight: 900; margin: 25px 0; }
+        
+        .btn { 
+            padding: 14px 32px; font-weight: 700; border-radius: 5px; 
+            text-transform: uppercase; color: white; border: none; cursor: pointer;
+            letter-spacing: 1px; transition: 0.3s; font-size: 14px; display: inline-block; text-decoration: none;
+        }
+        .btn-red { background: var(--red); }
+        .btn-red:hover { background: #ff1e27; box-shadow: 0 0 20px rgba(229, 9, 20, 0.5); }
 
-        footer { padding: 40px 5%; text-align: center; color: var(--light-gray); font-size: 12px; border-top: 1px solid #222; margin-top: 50px; }
+        footer { padding: 50px 5%; text-align: center; color: var(--light-gray); font-size: 13px; border-top: 1px solid #222; margin-top: 60px; }
     </style>
 </head>
 <body>
 
 <nav>
     <div class="nav-left">
-        <!-- Make sure your logo is named logo.png in GitHub -->
-        <img src="logo.png" alt="GameX" style="height: 35px;" onerror="this.style.display='none'">
+        <img src="logo.png" alt="GameX" style="height: 38px;" onerror="this.style.display='none'">
         <div class="nav-links">
             <a onclick="showTab('home')" id="link-home" class="active-link">GAMES</a>
             <a onclick="showTab('pricing')" id="link-pricing">MEMBERSHIP</a>
         </div>
     </div>
-    <button class="btn btn-red" onclick="showTab('pricing')">UPGRADE</button>
+    <button class="btn btn-red" style="padding: 10px 20px;" onclick="showTab('pricing')">UPGRADE</button>
 </nav>
 
 <!-- HOME / GAMES TAB -->
 <div id="home" class="page-section active">
     <div class="hero">
         <div class="hero-content">
+            <!-- NEW BANNER PLACEMENT -->
+            <img src="banner.png" class="promo-img" alt="Start Your Gaming Experience">
+            
             <h1>The Power is Yours</h1>
-            <p>Stream top-tier PC games directly to your browser. No downloads. No waiting. Just instant access to your library.</p>
-            <button class="btn btn-red" onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">PLAY NOW</button>
+            <p>Don't let hardware hold you back. Stream the world's most demanding PC games to any device instantly with our cloud infrastructure.</p>
+            <button class="btn btn-red" onclick="document.getElementById('games-list').scrollIntoView({behavior: 'smooth'})">EXPLORE GAMES</button>
         </div>
     </div>
 
-    <div class="container" id="games">
-        <h2 class="section-title">Free-to-Play</h2>
+    <div class="container" id="games-list">
+        <h2 class="section-title">Free-to-Play Titles</h2>
         <div class="game-grid">
             
-            <!-- Fortnite Card -->
             <div class="game-card">
                 <img src="fortnite.jpg" alt="Fortnite">
-                <div class="play-overlay">
-                    <div class="play-btn-circle">▶</div>
-                </div>
+                <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
                 <div class="game-info">
                     <h3>Fortnite</h3>
-                    <p>Epic Games • Battle Royale</p>
+                    <p>Epic Games • Action</p>
                 </div>
             </div>
 
-            <!-- Roblox Card -->
             <div class="game-card">
                 <img src="roblox.png" alt="Roblox">
-                <div class="play-overlay">
-                    <div class="play-btn-circle">▶</div>
-                </div>
+                <div class="play-overlay"><div class="play-btn-circle">▶</div></div>
                 <div class="game-info">
                     <h3>Roblox</h3>
-                    <p>Roblox Corp • Sandbox</p>
+                    <p>Roblox Corp • Virtual World</p>
                 </div>
             </div>
 
+        </div>
+
+        <div style="background: #0a0a0a; border: 1px solid #1a1a1a; padding: 50px; border-radius: 15px; margin-top: 80px; text-align: left;">
+            <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
+            <p style="color: var(--light-gray); line-height: 1.8; font-size: 1.1rem;">GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's specs. By leveraging remote server power, we eliminate the need for expensive hardware or long downloads.</p>
         </div>
     </div>
 </div>
@@ -176,54 +180,40 @@
 <!-- PRICING / MEMBERSHIP TAB -->
 <div id="pricing" class="page-section">
     <div class="container" style="text-align: center; padding-top: 60px;">
-        <h1 style="font-size: 3rem; margin-bottom: 10px;">Select Your Tier</h1>
-        <p style="color: var(--light-gray); margin-bottom: 50px;">Upgrade your rig in the cloud.</p>
+        <h1 style="font-size: 3.5rem; margin-bottom: 15px;">Choose Your Rig</h1>
+        <p style="color: var(--light-gray); margin-bottom: 60px; font-size: 1.2rem;">Elevate your gameplay with premium cloud performance.</p>
         
         <div class="pricing-grid">
             <div class="price-card" style="text-align: left;">
                 <h2>Basic</h2>
-                <div class="price">$0<span style="font-size: 1rem; color: gray;">/mo</span></div>
-                <ul>
-                    <li>Standard access to gaming servers</li>
-                    <li>1-hour session length</li>
-                    <li>1080p resolution at 60 FPS</li>
-                </ul>
-                <button class="btn btn-outline" style="width: 100%;" onclick="showTab('home')">JOIN FREE</button>
+                <div class="price">$0</div>
+                <p style="color:var(--light-gray)">Perfect for casual sessions.</p>
+                <button class="btn" style="width: 100%; background: #333;" onclick="showTab('home')">CURRENT PLAN</button>
             </div>
 
             <div class="price-card featured" style="text-align: left;">
-                <h2 style="color: var(--red);">Ultimate Rig</h2>
-                <div class="price">$15<span style="font-size: 1rem; color: gray;">/mo</span></div>
-                <ul>
-                    <li>Exclusive access to RTX 4080 servers</li>
-                    <li>Unlimited session lengths</li>
-                    <li>Up to 4K resolution at 120 FPS</li>
-                    <li>Zero queue times</li>
-                </ul>
-                <button class="btn btn-red" style="width: 100%;">SUBSCRIBE</button>
+                <h2 style="color: var(--red);">Ultimate</h2>
+                <div class="price">$15</div>
+                <p style="color:var(--light-gray)">No queues. Unlimited 4K power.</p>
+                <button class="btn btn-red" style="width: 100%;">UPGRADE NOW</button>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    &copy; 2026 GameX Cloud Gaming. All rights reserved.
+    &copy; 2026 GameX Cloud Gaming. <br> Powered by next-gen streaming tech.
 </footer>
 
 <script>
     function showTab(tabId) {
-        // Hide all sections
         document.getElementById('home').classList.remove('active');
         document.getElementById('pricing').classList.remove('active');
-        
-        // Remove active class from links
         document.getElementById('link-home').classList.remove('active-link');
         document.getElementById('link-pricing').classList.remove('active-link');
 
-        // Show the selected section and highlight the link
         document.getElementById(tabId).classList.add('active');
         document.getElementById('link-' + tabId).classList.add('active-link');
-        
         window.scrollTo(0,0);
     }
 </script>
