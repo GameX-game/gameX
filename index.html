@@ -43,26 +43,27 @@
         .hero {
             position: relative;
             width: 100%;
-            min-height: 90vh; 
-            background: linear-gradient(to top, var(--dark) 15%, transparent), url('hero.jpg') no-repeat center center/cover;
+            min-height: 100vh; 
+            background: var(--dark);
             display: flex;
-            align-items: flex-end;
-            padding: 60px 5%;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
             box-sizing: border-box;
         }
-        .hero-content {
-            max-width: 700px;
-        }
-        
-        /* Your new banner positioning */
+
+        /* Full-Width Banner Image */
         .promo-img {
             width: 100%;
-            max-width: 580px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
-            border: 1px solid #333;
+            height: auto;
             display: block;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #222;
+        }
+
+        .hero-content {
+            padding: 0 5% 60px 5%;
+            max-width: 800px;
         }
 
         .hero-content h1 { font-size: 3.5rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; line-height: 1.1; }
@@ -136,10 +137,10 @@
 <!-- HOME / GAMES TAB -->
 <div id="home" class="page-section active">
     <div class="hero">
+        <!-- Banner image now takes full width -->
+        <img src="banner.png" class="promo-img" alt="Start Your Gaming Experience">
+        
         <div class="hero-content">
-            <!-- NEW BANNER PLACEMENT -->
-            <img src="banner.png" class="promo-img" alt="Start Your Gaming Experience">
-            
             <h1>The Power is Yours</h1>
             <p>Don't let hardware hold you back. Stream the world's most demanding PC games to any device instantly with our cloud infrastructure.</p>
             <button class="btn btn-red" onclick="document.getElementById('games-list').scrollIntoView({behavior: 'smooth'})">EXPLORE GAMES</button>
@@ -172,7 +173,7 @@
 
         <div style="background: #0a0a0a; border: 1px solid #1a1a1a; padding: 50px; border-radius: 15px; margin-top: 80px; text-align: left;">
             <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
-            <p style="color: var(--light-gray); line-height: 1.8; font-size: 1.1rem;">GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's specs. By leveraging remote server power, we eliminate the need for expensive hardware or long downloads.</p>
+            <p style="color: var(--light-gray); line-height: 1.8; font-size: 1.1rem;">GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's specs.</p>
         </div>
     </div>
 </div>
@@ -181,20 +182,16 @@
 <div id="pricing" class="page-section">
     <div class="container" style="text-align: center; padding-top: 60px;">
         <h1 style="font-size: 3.5rem; margin-bottom: 15px;">Choose Your Rig</h1>
-        <p style="color: var(--light-gray); margin-bottom: 60px; font-size: 1.2rem;">Elevate your gameplay with premium cloud performance.</p>
-        
         <div class="pricing-grid">
             <div class="price-card" style="text-align: left;">
                 <h2>Basic</h2>
                 <div class="price">$0</div>
-                <p style="color:var(--light-gray)">Perfect for casual sessions.</p>
                 <button class="btn" style="width: 100%; background: #333;" onclick="showTab('home')">CURRENT PLAN</button>
             </div>
 
             <div class="price-card featured" style="text-align: left;">
                 <h2 style="color: var(--red);">Ultimate</h2>
                 <div class="price">$15</div>
-                <p style="color:var(--light-gray)">No queues. Unlimited 4K power.</p>
                 <button class="btn btn-red" style="width: 100%;">UPGRADE NOW</button>
             </div>
         </div>
@@ -202,7 +199,7 @@
 </div>
 
 <footer>
-    &copy; 2026 GameX Cloud Gaming. <br> Powered by next-gen streaming tech.
+    &copy; 2026 GameX Cloud Gaming.
 </footer>
 
 <script>
