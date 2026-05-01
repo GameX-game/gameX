@@ -23,10 +23,10 @@
             margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        /* Nav Layout Fix */
+        /* Nav Layout: Links Left, Auth Right */
         nav { 
             position: fixed; top: 0; width: 100%; height: 70px;
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
             border-bottom: 1px solid #222;
             display: flex; justify-content: space-between; align-items: center;
             padding: 0 5%; z-index: 1000; box-sizing: border-box;
@@ -40,11 +40,11 @@
         .page-section { display: none; padding-top: 70px; }
         .active { display: block !important; }
 
-        /* Cinematic Banner */
-        .promo-container { width: 100%; background: #000; overflow: hidden; }
+        /* Full-Width Cinematic Banner */
+        .promo-container { width: 100vw; background: #000; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; }
         .promo-banner {
             width: 100%;
-            height: 450px;
+            height: 550px; /* Increased height for full-size feel */
             object-fit: cover;
             display: block;
         }
@@ -69,16 +69,6 @@
         .game-card img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
         .game-info { padding: 12px; text-align: center; }
 
-        /* About Us Section */
-        .about-section {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            padding: 50px;
-            border-radius: 15px;
-            margin-top: 80px;
-            text-align: left;
-        }
-
         /* Pricing Tiers */
         .pricing-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
         .price-card { background: var(--gray); padding: 40px; border-radius: 12px; width: 300px; text-align: left; border: 1px solid #222; }
@@ -87,12 +77,15 @@
         ul { list-style: none; padding: 0; line-height: 2; color: var(--light-gray); }
         ul li::before { content: "• "; color: var(--red); }
 
-        .btn { padding: 12px 25px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; }
-        .btn-red { background: var(--red); color: white; }
-        .btn-outline { background: transparent; color: white; border: 1px solid var(--light-gray); font-size: 12px; }
-        .btn-outline:hover { border-color: white; }
+        /* About Section */
+        .about-section { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; margin-top: 60px; }
 
-        footer { padding: 50px 5%; text-align: center; color: var(--light-gray); font-size: 13px; border-top: 1px solid #222; margin-top: 60px; }
+        .btn { padding: 12px 25px; font-weight: 700; border-radius: 4px; border: none; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
+        .btn-red { background: var(--red); color: white; }
+        .btn-red:hover { background: #ff0f1a; }
+        .btn-outline { background: transparent; color: white; border: 1px solid var(--light-gray); font-size: 12px; text-decoration: none; }
+
+        footer { padding: 40px 5%; text-align: center; color: var(--light-gray); font-size: 13px; border-top: 1px solid #222; margin-top: 60px; }
     </style>
 </head>
 <body>
@@ -106,18 +99,20 @@
         </div>
     </div>
     <div class="nav-right">
-        <a class="btn btn-outline" style="border:none; text-decoration:none;" href="#">LOG IN</a>
+        <a class="btn btn-outline" style="border:none;" href="#">LOG IN</a>
         <button class="btn btn-red" style="font-size: 12px; padding: 8px 20px;">SIGN UP</button>
     </div>
 </nav>
 
 <div id="home" class="page-section active">
     <div class="promo-container">
+        <!-- Banner image updated to full size -->
         <img src="banner.png" class="promo-banner" alt="GameX Banner">
     </div>
+    
     <div class="hero-content">
         <h1>The Power is Yours</h1>
-        <p>High-performance gaming, streamed instantly. Select a title to begin.</p>
+        <p>Stream high-end PC games on any device. Select a title to begin your experience.</p>
     </div>
     
     <div class="container">
@@ -133,11 +128,10 @@
             </div>
         </div>
 
-        <!-- About Us restored here -->
         <div class="about-section">
             <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
-            <p style="color: var(--light-gray); line-height: 1.8; font-size: 1.1rem;">
-                GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's specs. By leveraging remote server power, we eliminate the need for expensive hardware or long downloads.
+            <p style="color: var(--light-gray); line-height: 1.8;">
+                GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of their device's hardware. Stream instantly, play anywhere.
             </p>
         </div>
     </div>
@@ -153,7 +147,7 @@
                 <ul>
                     <li>Stream up to 1080p 60FPS</li>
                     <li>3-Hour Session Length</li>
-                    <li>Standard Queue</li>
+                    <li>Standard Queue (Wait in line)</li>
                 </ul>
                 <button class="btn btn-outline" style="width: 100%; margin-top:20px;" onclick="showTab('home')">JOIN FREE</button>
             </div>
@@ -162,8 +156,8 @@
                 <div class="price">$9.99</div>
                 <ul>
                     <li>High-Def 1440p 90FPS</li>
-                    <li>6-Hour Sessions</li>
-                    <li>Priority Queue</li>
+                    <li>6-Hour Session Length</li>
+                    <li>Priority Queue (Don't wait in line)</li>
                 </ul>
                 <button class="btn btn-red" style="width: 100%; margin-top:20px;">UPGRADE</button>
             </div>
@@ -171,9 +165,10 @@
                 <h2>Premium</h2>
                 <div class="price">$15</div>
                 <ul>
-                    <li>4K 120FPS Streaming</li>
+                    <li>Cinema 4K 120FPS</li>
                     <li>Unlimited Session Length</li>
-                    <li>Instant Access</li>
+                    <li>No Ads & Instant Access</li>
+                    <li>Don't wait in line</li>
                 </ul>
                 <button class="btn btn-red" style="width: 100%; margin-top:20px;">GO PREMIUM</button>
             </div>
@@ -181,10 +176,9 @@
     </div>
 </div>
 
-<!-- Copyright restored here -->
 <footer>
-    &copy; 2026 GameX Cloud Gaming. <br> 
-    All rights reserved. Powered by next-gen streaming tech.
+    &copy; 2026 GameX Cloud Gaming. All rights reserved. <br>
+    We are currently on early access until October 2026.
 </footer>
 
 <script>
@@ -199,7 +193,7 @@
     }
 
     function launchGame(gameName) {
-        alert("Preparing stream for " + gameName + "...\nStatus: GPU Provisioning in Progress. Please check back soon!");
+        alert("Preparing stream for " + gameName + "...\nStatus: GPU Provisioning in Progress.");
     }
 </script>
 
