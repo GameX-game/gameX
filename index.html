@@ -23,7 +23,7 @@
             margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        /* Nav Layout */
+        /* Nav Bar Fixed at Top */
         nav { 
             position: fixed; top: 0; width: 100%; height: 70px;
             background: rgba(0,0,0,0.95); backdrop-filter: blur(10px);
@@ -37,30 +37,29 @@
         .nav-links a { color: var(--light-gray); text-decoration: none; font-weight: 700; font-size: 14px; cursor: pointer; }
         .active-link { color: white !important; border-bottom: 2px solid var(--red); padding-bottom: 5px; }
 
-        .page-section { display: none; padding-top: 70px; } /* Offset for Nav */
+        .page-section { display: none; padding-top: 70px; } 
         .active { display: block !important; }
 
-        /* Banner Adjustment to show the whole image */
+        /* Banner Fix: Ensures full width and correct height */
         .promo-container { 
             width: 100%; 
             background: #000; 
             overflow: hidden;
-            line-height: 0; /* Removes bottom gap */
+            display: flex;
+            justify-content: center;
         }
         .promo-banner {
             width: 100%;
-            height: auto; /* Lets the full image scale naturally */
-            max-height: 85vh; /* Prevents it from being too tall on huge monitors */
+            height: auto; 
             display: block;
-            object-fit: contain; /* Ensures no parts are cut off */
         }
 
-        .hero-content { padding: 40px 5%; max-width: 800px; }
-        .hero-content h1 { font-size: 3rem; font-weight: 900; margin: 10px 0; text-transform: uppercase; }
+        .hero-content { padding: 40px 5% 10px 5%; max-width: 800px; }
+        .hero-content h1 { font-size: 2.5rem; font-weight: 900; margin: 0; text-transform: uppercase; }
         
-        .container { padding: 40px 5%; }
+        .container { padding: 20px 5% 40px 5%; }
         
-        /* Game Grid */
+        /* Game Cards */
         .game-grid { display: flex; gap: 20px; flex-wrap: wrap; }
         .game-card { 
             background: var(--gray); 
@@ -75,13 +74,12 @@
         .game-card img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; }
         .game-info { padding: 12px; text-align: center; }
 
-        /* Pricing */
+        /* Membership */
         .pricing-grid { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; margin-top: 40px; }
         .price-card { background: var(--gray); padding: 40px; border-radius: 12px; width: 300px; text-align: left; border: 1px solid #222; }
         .price-card.featured { border: 2px solid var(--red); transform: scale(1.05); }
         .price { font-size: 2.5rem; font-weight: 900; margin: 15px 0; color: var(--red); }
         ul { list-style: none; padding: 0; line-height: 2; color: var(--light-gray); }
-        ul li::before { content: "• "; color: var(--red); }
 
         .about-section { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px; border-radius: 12px; margin-top: 60px; }
 
@@ -110,13 +108,13 @@
 
 <div id="home" class="page-section active">
     <div class="promo-container">
-        <!-- Using banner_3.jpg which contains your text -->
-        <img src="banner_3.jpg" class="promo-banner" alt="Start your Gaming experience">
+        <!-- CRITICAL: Make sure this filename matches your folder (banner_4.jpg) -->
+        <img src="banner_4.jpg" class="promo-banner" alt="GameX Experience Banner">
     </div>
     
     <div class="hero-content">
         <h1>THE POWER IS YOURS</h1>
-        <p>Stream high-end PC games on any device. Select a title to begin your experience.</p>
+        <p>Stream high-end PC games on any device. Select a title to begin.</p>
     </div>
     
     <div class="container">
@@ -135,26 +133,23 @@
         <div class="about-section">
             <h2 style="color: var(--red); margin-top: 0;">About Us</h2>
             <p style="color: var(--light-gray); line-height: 1.8;">
-                GameX is pioneering the future of browser-based cloud gaming. We believe that everyone should have access to high-end gaming experiences, regardless of hardware. Stream instantly, play anywhere.
+                GameX is pioneering browser-based cloud gaming. Access high-end gaming experiences instantly, without the need for expensive hardware.
             </p>
         </div>
     </div>
 </div>
 
 <div id="pricing" class="page-section">
-    <!-- Pricing content remains the same -->
     <div class="container" style="text-align: center;">
         <h1>Membership Levels</h1>
         <div class="pricing-grid">
             <div class="price-card">
                 <h2>Basic</h2><div class="price">$0</div>
-                <ul><li>1080p 60FPS</li><li>3-Hour Sessions</li><li>Standard Queue</li></ul>
-                <button class="btn btn-outline" style="width: 100%; margin-top:20px;" onclick="showTab('home')">JOIN FREE</button>
+                <button class="btn btn-outline" style="width: 100%;" onclick="showTab('home')">JOIN FREE</button>
             </div>
             <div class="price-card featured">
                 <h2>Premium</h2><div class="price">$15</div>
-                <ul><li>4K 120FPS</li><li>Unlimited Sessions</li><li>Instant Access</li></ul>
-                <button class="btn btn-red" style="width: 100%; margin-top:20px;">GO PREMIUM</button>
+                <button class="btn btn-red" style="width: 100%;">GO PREMIUM</button>
             </div>
         </div>
     </div>
@@ -162,7 +157,7 @@
 
 <footer>
     &copy; 2026 GameX Cloud Gaming. All rights reserved. <br>
-    Providing next-gen streaming access globally.
+    Next-gen streaming technology.
 </footer>
 
 <script>
