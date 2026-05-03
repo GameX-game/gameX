@@ -14,19 +14,17 @@
             overflow: hidden; background-color: white;
         }
 
-        /* The Background Image with 25% transparency */
+        /* Background Image with 30% transparency (0.7 opacity) */
         .bg-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            /* Adjusting opacity to make it 25% transparent */
-            opacity: 0.75; 
+            opacity: 0.7; /* 30% transparent */
         }
         .bg-container img {
             width: 100%; height: 100%; object-fit: cover;
         }
 
-        /* Layout Container */
         .signup-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -35,7 +33,6 @@
             box-sizing: border-box;
         }
 
-        /* Heading Style */
         .header-box {
             background-color: #ff0000;
             color: black;
@@ -55,7 +52,6 @@
             text-align: center;
         }
 
-        /* Black Rounded Inputs */
         input[type="text"], input[type="email"], input[type="password"] {
             width: 100%;
             max-width: 400px;
@@ -69,7 +65,6 @@
             margin-left: auto; margin-right: auto;
         }
 
-        /* Checkbox area */
         .terms-area {
             display: flex;
             align-items: center;
@@ -78,21 +73,20 @@
             font-size: 1.1rem;
             margin-top: 10px;
         }
-        input[type="checkbox"] {
-            width: 25px; height: 25px; margin-right: 15px;
-        }
 
-        /* Neon Green Sign-Up Button */
-        .btn-signup {
-            background-color: #a2ff00; /* Neon Lime Green */
+        /* Neon Green Button Style */
+        .btn-green {
+            background-color: #a2ff00; 
             color: black;
             font-weight: 900;
             font-size: 1.8rem;
-            padding: 15px 40px;
+            padding: 15px 50px;
             border-radius: 15px;
             border: none;
             cursor: pointer;
             margin-top: 20px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .column-right {
@@ -121,7 +115,6 @@
     </div>
 
     <div class="signup-wrapper">
-        <!-- Left Side -->
         <div class="column-left">
             <div class="header-box">Sign-Up</div>
             
@@ -135,17 +128,16 @@
             <input type="password">
         </div>
 
-        <!-- Right Side -->
         <div class="column-right">
             <label>Confirm Password</label>
             <input type="password">
 
             <div class="terms-area">
-                <input type="checkbox" id="terms">
+                <input type="checkbox" id="terms" style="width:25px; height:25px; margin-right:15px;">
                 <label for="terms" style="font-size: 1.1rem; margin:0;">I agree to the terms and conditions</label>
             </div>
 
-            <button class="btn-signup">Sign -Up</button>
+            <button class="btn-green">Sign -Up</button>
         </div>
     </div>
 
