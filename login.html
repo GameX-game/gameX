@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | GameX Cloud Gaming</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <!-- Bold Font (Montserrat) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        /* Standardize Font Weight for Titles */
+        label {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: black;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* --- Left Side: The Form --- */
+        .login-side {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            box-sizing: border-box;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 450px;
+            text-align: left;
+        }
+
+        /* The Bold Red Login Button (Matching Image Shape) */
+        .login-title-btn {
+            background-color: #ff0000; /* Distinctive pure red */
+            color: black; /* Pure black text */
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 2.2rem;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 15px; /* Distinctive corner shape */
+            margin-bottom: 40px;
+            display: inline-block;
+            cursor: default; /* Title style, not a dynamic button */
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        /* Bold Black Rounded Inputs */
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            background-color: black; /* Solid black fill */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            border: none;
+            border-radius: 30px; /* High rounding */
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            outline: 2px solid #555;
+        }
+
+        /* Blue Links (Matching Image Style) */
+        a {
+            color: #0000FF; /* Pure blue */
+            text-decoration: underline;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .forgot-pass {
+            margin-top: 50px;
+            color: black;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        /* --- Right Side: The Banner --- */
+        .banner-side {
+            width: 55%;
+            position: relative;
+        }
+
+        .banner-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills the vertical space */
+        }
+
+        /* Background blur overlay matching the source vibe */
+        .banner-blur-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 0, 0, 0.05); /* Very slight red tint */
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Left: The Login Form -->
+    <div class="login-side">
+        <div class="form-container">
+            
+            <!-- Logo-Style Red Login Button -->
+            <div class="login-title-btn">Login</div>
+
+            <form action="#" method="post">
+                
+                <div class="input-group">
+                    <label for="username">Email/Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <!-- pure blue link -->
+                <div class="links">
+                    <a>Others ways to log-in</a>
+                </div>
+
+                <!-- Footer style pass recovery -->
+                <div class="forgot-pass">
+                    Forgot your password? <a>Click here</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Right: The banner.png Image -->
+    <div class="banner-side">
+        <img src="bannert.png" alt="Gaming Setup
+        <div class="banner-blur-overlay"></div>
+    </div>
+
+</body>
+</html>
